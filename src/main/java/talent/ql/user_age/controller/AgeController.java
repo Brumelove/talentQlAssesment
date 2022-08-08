@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import talent.ql.user_age.service.AgeService;
+import talent.ql.user_age.util.TranslatorUtils;
 
 import javax.validation.constraints.NotBlank;
 import java.time.Duration;
@@ -41,6 +42,6 @@ public class AgeController {
     @GetMapping("/howold")
     public ResponseEntity<Long> calculateAge(@NotBlank(message = "{timeStamp.required}") @RequestParam String timeStamp) {
         if (bucket.tryConsume(1)) return ResponseEntity.ok(service.calculateAge(timeStamp));
-        throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS, "You have exhausted your API Request Quota");
+        throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS, TranslatorUtils.toLocale("too.many.requests"));
     }
 }
