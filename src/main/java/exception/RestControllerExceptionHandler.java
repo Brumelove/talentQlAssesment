@@ -29,7 +29,7 @@ import java.util.Map;
 @AllArgsConstructor
 @Slf4j
 @Component
-public class RestControllerExceptionHandler extends ResponseEntityExceptionHandler {
+public class RestControllerExceptionHandler {
 
     private final ErrorAttributes errorAttributes;
 

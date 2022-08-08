@@ -5,7 +5,7 @@ package talent.ql.user_age.service;
  **/
 public interface AgeService {
     /**
-     * This method takes in the timestamp of the user in the  2007-12-03T10:15:3 yyyy- format
+     * This method takes in the timestamp of the user in the  2007-12-03 10:15:03 format
      *
      * @param timeStamp
      * @return long

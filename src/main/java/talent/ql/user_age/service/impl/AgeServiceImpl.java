@@ -1,5 +1,6 @@
 package talent.ql.user_age.service.impl;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import java.time.DateTimeException;
  **/
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class AgeServiceImpl implements AgeService {
     @Override
     public long calculateAge(String timeStamp) {
@@ -29,4 +31,7 @@ public class AgeServiceImpl implements AgeService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, TranslatorUtils.toLocale("date.time.bad.format"));
         }
     }
+
+
 }
+
