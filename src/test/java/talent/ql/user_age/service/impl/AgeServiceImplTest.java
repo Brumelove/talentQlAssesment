@@ -31,11 +31,19 @@ class AgeServiceImplTest extends MockitoJunitRunner {
     }
 
     @Test
-    void calculateAge() {
+    void calculateAgeWithLocalDateTime() {
         String timeStamp = "2020-02-09 12:22:09";
         var response = ageService.calculateAge(timeStamp);
         assertEquals(2, response);
     }
+
+    @Test
+    void calculateAgeWithUnixTimeStamp() {
+        String timeStamp = "22";
+        var response = ageService.calculateAge(timeStamp);
+        assertEquals(52, response);
+    }
+
 
     @Test
     void calculateAgeWithException() {
@@ -52,6 +60,6 @@ class AgeServiceImplTest extends MockitoJunitRunner {
 
         var exception = Assertions.assertThrows(ResponseStatusException.class, () -> ageService.calculateAge(timeStamp));
         assertEquals(HttpStatus.BAD_REQUEST, exception.getStatus());
-        assertEquals("timestamp format is wrong please use YYYY-MM-DD HH:mm:ss", exception.getReason());
+        assertEquals("timestamp format is wrong please use YYYY-MM-DD HH:mm:ss  or unix epoch format", exception.getReason());
     }
 }

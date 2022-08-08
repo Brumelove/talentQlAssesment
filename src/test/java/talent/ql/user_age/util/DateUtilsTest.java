@@ -37,4 +37,11 @@ class DateUtilsTest extends MockitoJunitRunner {
         assertEquals(1, response);
 
     }
+
+    @Test
+    void parseUnixToLocalDateTime() {
+        var response = DateUtils.parseUnixToLocalDateTime("22");
+
+        assertNotNull(response);
+    }
 }

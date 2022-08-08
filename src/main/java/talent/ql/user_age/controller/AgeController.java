@@ -40,8 +40,8 @@ public class AgeController {
     }
 
     @GetMapping("/howold")
-    public ResponseEntity<Long> calculateAge(@NotBlank(message = "{timeStamp.required}") @RequestParam String timeStamp) {
-        if (bucket.tryConsume(1)) return ResponseEntity.ok(service.calculateAge(timeStamp));
+    public ResponseEntity<Long> calculateAge(@NotBlank(message = "dob.required") @RequestParam(defaultValue = "22019290 ") String dob) {
+        if (bucket.tryConsume(1)) return ResponseEntity.ok(service.calculateAge(dob));
         throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS, TranslatorUtils.toLocale("too.many.requests"));
     }
 }

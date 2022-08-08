@@ -48,14 +48,14 @@ class AgeControllerTest {
     @Test
     @SneakyThrows
     void calculateAge() {
-        String timeStamp = RandomStringUtils.randomAlphanumeric(5);
-        when(service.calculateAge(timeStamp)).thenReturn(4L);
-        var response = controller.calculateAge(timeStamp);
+        String dob = RandomStringUtils.randomAlphanumeric(5);
+        when(service.calculateAge(dob)).thenReturn(4L);
+        var response = controller.calculateAge(dob);
 
         assertNotNull(response);
         assertEquals(4L, response.getBody());
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/howold/" + timeStamp)
+        mockMvc.perform(MockMvcRequestBuilders.get("/howold/" + dob)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }

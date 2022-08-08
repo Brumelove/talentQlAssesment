@@ -10,6 +10,7 @@ import talent.ql.user_age.util.DateUtils;
 import talent.ql.user_age.util.TranslatorUtils;
 
 import java.time.DateTimeException;
+import java.time.LocalDateTime;
 
 /**
  * @author Brume
@@ -19,17 +20,23 @@ import java.time.DateTimeException;
 @RequiredArgsConstructor
 public class AgeServiceImpl implements AgeService {
     @Override
-    public long calculateAge(String timeStamp) {
+    public long calculateAge(String dob) {
+        LocalDateTime dateTime;
         try {
-            var dateTime = DateUtils.parseToLocalDateTime(timeStamp);
-            if (dateTime.getYear() > DateUtils.getCurrentDate().getYear())
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, TranslatorUtils.toLocale("bad.year.date"));
+            dateTime = DateUtils.parseUnixToLocalDateTime(dob);
+        } catch (NumberFormatException e) {
+            try {
+                dateTime = DateUtils.parseToLocalDateTime(dob);
+                if (dateTime.getYear() > DateUtils.getCurrentDate().getYear())
+                    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, TranslatorUtils.toLocale("bad.year.date"));
 
-            log.info("TIMESTAMP ::: ::: " + dateTime);
-            return DateUtils.differenceInYears(dateTime.toLocalDate());
-        } catch (DateTimeException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, TranslatorUtils.toLocale("date.time.bad.format"));
+            } catch (DateTimeException de) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, TranslatorUtils.toLocale("date.time.bad.format"));
+            }
         }
+        log.info("TIMESTAMP ::: ::: " + dateTime);
+
+        return DateUtils.differenceInYears(dateTime.toLocalDate());
     }
 
 
