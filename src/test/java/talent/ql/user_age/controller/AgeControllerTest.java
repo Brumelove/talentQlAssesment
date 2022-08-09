@@ -84,22 +84,6 @@ class AgeControllerTest {
     }
 
     @Test
-    @SneakyThrows
-    void calculateAgeWithRateLimit2() {
-        String dob = RandomStringUtils.randomAlphanumeric(5);
-
-        for (int i = 0; i < 4; i++) {
-            if (i > 3) {
-
-                mockMvc.perform(MockMvcRequestBuilders.get("/howold?dob=" + dob)
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content("You have exhausted your API Request Quota"))
-                        .andExpect(status().isTooManyRequests());
-            }
-        }
-    }
-
-    @Test
     void calculateAgeWithException() {
         String timeStamp = "2024-02-09 12:22:09";
         for (int i = 0; i < 4; i++) {
