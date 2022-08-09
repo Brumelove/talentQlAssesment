@@ -34,7 +34,7 @@ bucket4j:
         - bandwidths:
             - capacity: 3
               time: 1
-              unit: minutes
+              unit: seconds
 
 
 

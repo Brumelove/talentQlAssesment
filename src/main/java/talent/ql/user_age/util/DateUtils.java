@@ -24,7 +24,7 @@ public final class DateUtils {
      * @param dateTime
      * @return LocalDateTime
      */
-    public static LocalDateTime parseToLocalDateTime(String dateTime) {
+    public static LocalDateTime parseStringToLocalDateTime(String dateTime) {
         dateTimeFormatter.withZone(ZoneId.of(UTC));
         return LocalDateTime.parse(dateTime, dateTimeFormatter);
     }

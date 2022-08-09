@@ -18,7 +18,7 @@ class DateUtilsTest extends MockitoJunitRunner {
     void parseToLocalDateTime() {
         String timeStamp = "2020-08-09 12:00:09";
 
-        assertNotNull(DateUtils.parseToLocalDateTime(timeStamp));
+        assertNotNull(DateUtils.parseStringToLocalDateTime(timeStamp));
     }
 
     @Test
@@ -29,12 +29,12 @@ class DateUtilsTest extends MockitoJunitRunner {
 
     @Test
     void differenceInYears() {
-        var secondDate = DateUtils.parseToLocalDateTime("2020-08-09 12:00:09");
+        var secondDate = DateUtils.parseStringToLocalDateTime("2020-08-09 12:00:09");
 
         var response = DateUtils.differenceInYears(secondDate.toLocalDate());
 
         assertNotNull(response);
-        assertEquals(1, response);
+        assertEquals(2, response);
 
     }
 

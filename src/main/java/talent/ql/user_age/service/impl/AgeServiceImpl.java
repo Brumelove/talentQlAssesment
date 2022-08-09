@@ -26,7 +26,7 @@ public class AgeServiceImpl implements AgeService {
             dateTime = DateUtils.parseUnixToLocalDateTime(dob);
         } catch (NumberFormatException e) {
             try {
-                dateTime = DateUtils.parseToLocalDateTime(dob);
+                dateTime = DateUtils.parseStringToLocalDateTime(dob);
                 if (dateTime.getYear() > DateUtils.getCurrentDate().getYear())
                     throw new ResponseStatusException(HttpStatus.BAD_REQUEST, TranslatorUtils.toLocale("bad.year.date"));
 

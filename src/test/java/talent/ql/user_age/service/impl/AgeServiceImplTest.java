@@ -60,6 +60,6 @@ class AgeServiceImplTest extends MockitoJunitRunner {
 
         var exception = Assertions.assertThrows(ResponseStatusException.class, () -> ageService.calculateAge(timeStamp));
         assertEquals(HttpStatus.BAD_REQUEST, exception.getStatus());
-        assertEquals("timestamp format is wrong please use YYYY-MM-DD HH:mm:ss  or unix epoch format", exception.getReason());
+        assertEquals("timestamp format is wrong please use YYYY-MM-DD HH:mm:ss or unix epoch format", exception.getReason());
     }
 }
