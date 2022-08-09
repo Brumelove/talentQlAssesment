@@ -28,5 +28,4 @@ class TranslatorUtilsTest extends MockitoJunitRunner {
         var response = TranslatorUtils.toLocale("date.time.bad.format");
         assertEquals("timestamp format is wrong please use YYYY-MM-DD HH:mm:ss or unix epoch format", response);
     }
-
 }
