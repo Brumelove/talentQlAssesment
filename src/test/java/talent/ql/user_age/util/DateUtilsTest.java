@@ -1,7 +1,6 @@
 package talent.ql.user_age.util;
 
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import talent.ql.user_age.MockitoJunitRunner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -11,8 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  * @author Brume
  **/
 class DateUtilsTest extends MockitoJunitRunner {
-    @InjectMocks
-    private DateUtils dateUtils;
 
     @Test
     void parseToLocalDateTime() {

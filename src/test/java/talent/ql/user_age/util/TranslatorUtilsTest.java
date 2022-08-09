@@ -2,7 +2,6 @@ package talent.ql.user_age.util;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import talent.ql.user_age.MockitoJunitRunner;
 
@@ -12,10 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author Brume
  **/
 class TranslatorUtilsTest extends MockitoJunitRunner {
-
-    @InjectMocks
-    private TranslatorUtils translatorUtils;
-
 
     @BeforeEach
     public void init() {

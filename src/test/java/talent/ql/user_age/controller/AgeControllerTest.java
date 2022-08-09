@@ -30,10 +30,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest()
 @ContextConfiguration(classes = {AgeController.class})
 class AgeControllerTest {
+    @MockBean
+    AgeService ageService;
     @Autowired
     private MockMvc mockMvc;
-    @MockBean
-    private AgeService ageService;
     @Mock
     private AgeService service;
     @InjectMocks
@@ -46,7 +46,6 @@ class AgeControllerTest {
         rs.setDefaultEncoding("UTF-8");
 
         new TranslatorUtils(rs);
-
     }
 
     @Test
